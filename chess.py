@@ -4,6 +4,8 @@ import random
 
 from piece import Piece
 from utils import Utils
+from tts_handler import TTSHandler
+
 
 import time
 
@@ -23,6 +25,8 @@ class Chess(object):
 
         # list containing possible moves for the selected piece
         self.moves = []
+        self.tts = TTSHandler()
+
         #
         self.utils = Utils()
 
@@ -523,6 +527,8 @@ class Chess(object):
                     src_location = k + str(key)
                     des_location = desColChar + str(desRowNo)
                     print("{} moved from {} to {}".format(src_name,  src_location, des_location))
+                    self.tts.speak(f"{src_name.replace('_', ' ')} moved from {src_location} to {des_location}")
+
 
 
     # helper function to find diagonal moves
